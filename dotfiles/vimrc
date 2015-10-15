@@ -36,7 +36,7 @@ map <leader>bc <C-w>q
 map <leader>co ggVGy
 map <leader>e :e <C-r>=escape(expand("%:p:h"),' ') . '/'<CR>
 map <leader>fq :q!<CR>
-map <leader>gp :!git add . && git commit -m && git push<CR>
+map <leader>gp :!git add .<CR>:!git commit<CR>:!git push<CR>
 map <leader>h :CtrlP<CR>
 map <leader>hs :new .<CR>
 map <leader>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
@@ -56,9 +56,6 @@ map <leader>wq :wq<CR>
 nnoremap <leader>l :call RunLastSpec()<CR>
 nnoremap <leader>s :call RunNearestSpec()<CR>
 nnoremap <leader>t :call RunCurrentSpecFile()<CR>
-
-" Run commands that require an interactive shell
-nnoremap <leader>r :RunInInteractiveShell<space>
 
 " Switch between the last two files
 nnoremap <leader><leader> <C-^>

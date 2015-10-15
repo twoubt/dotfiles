@@ -27,3 +27,6 @@ ln -s ~/dotfiles/secrets ~/.secrets
 
 rm ~/.gitignore_global 
 ln -s ~/dotfiles/gitignore ~/.gitignore_global
+
+rm ~/.gemrc
+ln -s ~/dotfiles/gemrc ~/.gemrc

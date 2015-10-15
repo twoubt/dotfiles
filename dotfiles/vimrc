@@ -1,0 +1,245 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+runtime macros/matchit.vim
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'Shougo/neocomplete.vim'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-sort-motion'
+Plug 'ervandew/supertab'
+Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
+Plug 'kien/ctrlp.vim'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+Plug 'morhetz/gruvbox'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-rails', { 'for': 'rails' }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rails'] }
+
+call plug#end()
+
+filetype plugin indent on
+
+" Leader
+let mapleader = " "
+map <leader>P :set paste<CR>O<ESC>
+map <leader>bb :!bundle install<CR>
+map <leader>bc <C-w>q
+map <leader>co ggVGy
+map <leader>e :e <C-r>=escape(expand("%:p:h"),' ') . '/'<CR>
+map <leader>fq :q!<CR>
+map <leader>gp :!git add . && git commit -m && git push<CR>
+map <leader>h :CtrlP<CR>
+map <leader>hs :new .<CR>
+map <leader>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <leader>i mmgg=G`m<CR>
+map <leader>n :call RenameFile()<cr>
+map <leader>p :set paste<CR>o<ESC>
+map <leader>pa :r!pbpaste<cr>
+map <leader>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-w>q
+map <leader>rw :%s/\s\+$//e<CR>
+map <leader>so :source $MYVIMRC<CR>
+map <leader>tc :tabclose<CR>
+map <leader>vi :tabe $MYVIMRC<CR>
+map <leader>vs :vnew .<CR>
+map <leader>vsf :vnew<C-r>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <leader>wq :wq<CR>
+
+" vim-rspec mappings
+nnoremap <leader>l :call RunLastSpec()<CR>
+nnoremap <leader>s :call RunNearestSpec()<CR>
+nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+
+" Run commands that require an interactive shell
+nnoremap <leader>r :RunInInteractiveShell<space>
+
+" Switch between the last two files
+nnoremap <leader><leader> <C-^>
+
+inoremap <C-s> <ESC>:w<CR>
+inoremap jk <ESC>
+inoremap kj <ESC>
+map <C-s> <ESC>:w<CR>
+map <C-t> <ESC>:tabnew<CR>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+map <up> <nop>
+map K <nop>
+nnoremap <C-w>u :call MergeTabs()<CR>
+nnoremap Y y$
+nnoremap j gj
+nnoremap k gk
+nnoremap ˚ :m +1<CR>
+nnoremap ∆ :m -2<CR>
+vnoremap jk <ESC>
+vnoremap kj <ESC>
+
+" Quicker window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <leader>mwh <C-w>H
+nnoremap <leader>mwj <C-w>J
+nnoremap <leader>mwk <C-w>K
+nnoremap <leader>mwl <C-w>L
+
+command! Q q " Bind :Q to :q
+command! Qall qall
+command! QA qall
+command! E e
+
+autocmd BufWritePre *.rb :%s/\s\+$//e
+
+set autoindent
+set autoread
+set autowrite     " Automatically :write before running commands
+set backspace=indent,eol,start
+set complete+=kspell
+set copyindent
+set cursorline
+set diffopt+=vertical
+set expandtab
+set hidden
+set history=500
+set hlsearch
+set ignorecase
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set lazyredraw
+set list listchars=tab:»·,trail:·,nbsp:·
+set nobackup
+set nofoldenable
+set noswapfile
+set nowrap
+set nowritebackup
+set numberwidth=5
+set relativenumber
+set ruler         " show the cursor position all the time
+set scrolloff=5
+set shiftround
+set shiftwidth=2
+set showcmd       " display incomplete commands
+set showmatch
+set smartcase
+set smarttab
+set spellfile=$HOME/.vim-spell-en.utf-8.add
+set splitbelow
+set splitright
+set tabstop=2
+set timeoutlen=500
+set ttimeout
+set ttimeoutlen=1
+set wildmode=list:longest,list:full
+
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" theme
+syntax enable
+set background=dark
+colorscheme gruvbox
+
+" Syntax setting start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_eruby_ruby_quiet_messages =
+      \ {"regex": "possibly useless use of a variable in void context"}
+" Syntax setting end
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:neocomplete#enable_at_startup = 1
+let g:user_emmet_mode='a'
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
+
+augroup vimrcEx
+  autocmd!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+
+  " Set syntax highlighting for specific file types
+  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+  " Enable spellchecking for Markdown
+  autocmd FileType markdown setlocal spell
+
+  " Automatically wrap at 80 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+  " Automatically wrap at 72 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal spell
+
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
+augroup END
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" Merge a tab into a split in the previous window
+function! MergeTabs()
+  if tabpagenr() == 1
+    return
+  endif
+  let bufferName = bufname("%")
+  if tabpagenr("$") == tabpagenr()
+    close!
+  else
+    close!
+    tabprev
+  endif
+  split
+  execute "buffer " . bufferName
+endfunction
+
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction

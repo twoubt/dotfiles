@@ -52,8 +52,7 @@
   plugins=(git rails web-search jump)
 
 # User configuration
-  stty start undef
-  stty stop undef
+  stty -ixon
   source "$HOME/.secrets"
   source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette_osx.sh"
   source $ZSH/oh-my-zsh.sh

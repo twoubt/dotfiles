@@ -31,7 +31,6 @@ filetype plugin indent on
 
 " Leader
 let mapleader = " "
-map <leader>P :set paste<CR>O<ESC>
 map <leader>bb :!bundle install<CR>
 map <leader>bc <C-w>q
 map <leader>co ggVGy
@@ -42,9 +41,8 @@ map <leader>h :CtrlP<CR>
 map <leader>hs :new .<CR>
 map <leader>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
 map <leader>i mmgg=G`m<CR>
-map <leader>n :call RenameFile()<cr>
-map <leader>p :set paste<CR>o<ESC>
-map <leader>pa :r!pbpaste<cr>
+map <leader>n :call RenameFile()<CR>
+map <leader>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
 map <leader>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-w>q
 map <leader>rw :%s/\s\+$//e<CR>
 map <leader>so :source $MYVIMRC<CR>
@@ -65,9 +63,9 @@ nnoremap <leader>r :RunInInteractiveShell<space>
 " Switch between the last two files
 nnoremap <leader><leader> <C-^>
 
-inoremap <C-s> <ESC>:w<CR>
 inoremap jk <ESC>
 inoremap kj <ESC>
+map <C-h> :nohlsearch<CR>
 map <C-s> <ESC>:w<CR>
 map <C-t> <ESC>:tabnew<CR>
 map <down> <nop>
@@ -75,6 +73,8 @@ map <left> <nop>
 map <right> <nop>
 map <up> <nop>
 map K <nop>
+map P P<ESC>
+map p p<ESC>
 nnoremap <C-w>u :call MergeTabs()<CR>
 nnoremap Y y$
 nnoremap j gj
@@ -106,7 +106,6 @@ set autoread
 set autowrite     " Automatically :write before running commands
 set backspace=indent,eol,start
 set complete+=kspell
-set copyindent
 set cursorline
 set diffopt+=vertical
 set expandtab
@@ -119,6 +118,8 @@ set laststatus=2  " Always display the status line
 set lazyredraw
 set list listchars=tab:»·,trail:·,nbsp:·
 set nobackup
+set noerrorbells
+set novisualbell
 set nofoldenable
 set noswapfile
 set nowrap
@@ -137,7 +138,7 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 set splitbelow
 set splitright
 set tabstop=2
-set timeoutlen=500
+set timeoutlen=800
 set ttimeout
 set ttimeoutlen=1
 set wildmode=list:longest,list:full

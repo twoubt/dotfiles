@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/Shared'
+let g:netrw_dirhist_2='/Users/Shared/CleanMyMac 3 (from old Mac)'
+let g:netrw_dirhist_3='/Users/Zhou'
+let g:netrw_dirhist_4='/Users/Zhou/Dropbox/Code/Set up/dotfiles/vim'
+let g:netrw_dirhist_5='/Users/Zhou'
+let g:netrw_dirhist_6='/Users/Zhou/.oh-my-zsh'
+let g:netrw_dirhist_7='/Users/Zhou/.oh-my-zsh/plugins'
+let g:netrw_dirhist_8='/Users/Zhou/.oh-my-zsh/plugins/git'

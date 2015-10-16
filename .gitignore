@@ -1,4 +1,6 @@
-dotfiles/secrets
-dotfiles/vim/plugged
+dotfiles/iterm2
 dotfiles/omz
+dotfiles/secrets
+dotfiles/terminal
+dotfiles/vim/plugged
 term_colours

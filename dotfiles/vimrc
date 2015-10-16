@@ -37,10 +37,10 @@ nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <LEADER>co ggVGy
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 nnoremap <LEADER>fq :q!<CR>
-nnoremap <LEADER>gap :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
+nnoremap <LEADER>gcp :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
 nnoremap <LEADER>ggp :lcd ~/code/Set\ up<CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
 nnoremap <LEADER>h :nohlsearch<CR>
-nnoremap <LEADER>hs :new .<CR>
+nnoremap <LEADER>hs :new %:p:h<CR>
 nnoremap <LEADER>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>i mmgg=G`m<CR>
 nnoremap <LEADER>n :call RenameFile()<CR>
@@ -51,7 +51,7 @@ nnoremap <LEADER>rw :%s/\s\+$//e<CR>
 nnoremap <LEADER>so :source $MYVIMRC<CR>
 nnoremap <LEADER>tc :tabclose<CR>
 nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
-nnoremap <LEADER>vs :vnew .<CR>
+nnoremap <LEADER>vs :vnew %:p:h<CR>
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>wq :wq<CR>
 

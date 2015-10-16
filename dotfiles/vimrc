@@ -33,6 +33,7 @@ filetype plugin indent on
 let mapleader = " "
 nnoremap <LEADER>bb :!bundle install<CR>
 nnoremap <LEADER>bc <C-W>q
+nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <LEADER>co ggVGy
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 nnoremap <LEADER>fq :q!<CR>
@@ -45,6 +46,7 @@ nnoremap <LEADER>i mmgg=G`m<CR>
 nnoremap <LEADER>n :call RenameFile()<CR>
 nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
 nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-W>q
+nnoremap <LEADER>pwd :pwd<CR>
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
 nnoremap <LEADER>so :source $MYVIMRC<CR>
 nnoremap <LEADER>tc :tabclose<CR>
@@ -128,6 +130,7 @@ set ruler         " show the cursor position all the time
 set scrolloff=5
 set shiftround
 set shiftwidth=2
+set shortmess=a
 set showcmd       " display incomplete commands
 set showmatch
 set smartcase

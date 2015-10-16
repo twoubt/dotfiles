@@ -9,6 +9,7 @@
 	autocrlf = input
 	safecrlf = true
 	excludesfile = /Users/Zhou/.gitignore_global
+	editor = vim
 [push]
 	default = simple
 [credential]

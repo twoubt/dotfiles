@@ -31,66 +31,65 @@ filetype plugin indent on
 
 " Leader
 let mapleader = " "
-map <leader>bb :!bundle install<CR>
-map <leader>bc <C-w>q
-map <leader>co ggVGy
-map <leader>e :e <C-r>=escape(expand("%:p:h"),' ') . '/'<CR>
-map <leader>fq :q!<CR>
-map <leader>gp :!git add .<CR>:!git commit<CR>:!git push<CR>
-map <leader>h :CtrlP<CR>
-map <leader>hs :new .<CR>
-map <leader>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
-map <leader>i mmgg=G`m<CR>
-map <leader>n :call RenameFile()<CR>
-map <leader>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
-map <leader>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-w>q
-map <leader>rw :%s/\s\+$//e<CR>
-map <leader>so :source $MYVIMRC<CR>
-map <leader>tc :tabclose<CR>
-map <leader>vi :tabe $MYVIMRC<CR>
-map <leader>vs :vnew .<CR>
-map <leader>vsf :vnew<C-r>=escape(expand("%:p:h"), ' ') . '/'<CR>
-map <leader>wq :wq<CR>
+nnoremap <LEADER>bb :!bundle install<CR>
+nnoremap <LEADER>bc <C-W>q
+nnoremap <LEADER>co ggVGy
+nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+nnoremap <LEADER>fq :q!<CR>
+nnoremap <LEADER>gp :!git add .<CR>:!git commit<CR>:!git push<CR>
+nnoremap <LEADER>h :nohlsearch<CR>
+nnoremap <LEADER>hs :new .<CR>
+nnoremap <LEADER>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <LEADER>i mmgg=G`m<CR>
+nnoremap <LEADER>n :call RenameFile()<CR>
+nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
+nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-W>q
+nnoremap <LEADER>rw :%s/\s\+$//e<CR>
+nnoremap <LEADER>so :source $MYVIMRC<CR>
+nnoremap <LEADER>tc :tabclose<CR>
+nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
+nnoremap <LEADER>vs :vnew .<CR>
+nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <LEADER>wq :wq<CR>
 
 " vim-rspec mappings
-nnoremap <leader>l :call RunLastSpec()<CR>
-nnoremap <leader>s :call RunNearestSpec()<CR>
-nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <LEADER>l :call RunLastSpec()<CR>
+nnoremap <LEADER>s :call RunNearestSpec()<CR>
+nnoremap <LEADER>t :call RunCurrentSpecFile()<CR>
 
 " Switch between the last two files
-nnoremap <leader><leader> <C-^>
+nnoremap <LEADER><LEADER> <C-^>
 
+inoremap <C-S> <ESC>:w<CR>
 inoremap jk <ESC>
 inoremap kj <ESC>
-map <C-h> :nohlsearch<CR>
-map <C-s> <ESC>:w<CR>
-map <C-t> <ESC>:tabnew<CR>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-map <up> <nop>
-map K <nop>
-map P P<ESC>
-map p p<ESC>
-nnoremap <C-w>u :call MergeTabs()<CR>
+map <C-S> <ESC>:w<CR>
+map <C-T> <ESC>:tabnew<CR>
+map <DOWN> <NOP>
+map <LEFT> <NOP>
+map <RIGHT> <NOP>
+map <UP> <NOP>
+map K <NOP>
+nnoremap <C-W>u :call MergeTabs()<CR>
+nnoremap P P<ESC>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
+nnoremap p p<ESC>
 nnoremap ˚ :m +1<CR>
 nnoremap ∆ :m -2<CR>
 vnoremap jk <ESC>
 vnoremap kj <ESC>
 
 " Quicker window movement
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <leader>mwh <C-w>H
-nnoremap <leader>mwj <C-w>J
-nnoremap <leader>mwk <C-w>K
-nnoremap <leader>mwl <C-w>L
-
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <LEADER>mwh <C-W>H
+nnoremap <LEADER>mwj <C-W>J
+nnoremap <LEADER>mwk <C-W>K
+nnoremap <LEADER>mwl <C-W>L
 command! Q q " Bind :Q to :q
 command! Qall qall
 command! QA qall

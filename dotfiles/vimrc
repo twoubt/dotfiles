@@ -65,7 +65,7 @@ inoremap <C-S> <ESC>:w<CR>
 inoremap jk <ESC>
 inoremap kj <ESC>
 map <C-S> <ESC>:w<CR>
-map <C-T> <ESC>:tabnew<CR>
+map <C-T> <ESC>:tabnew .<CR>
 map <DOWN> <NOP>
 map <LEFT> <NOP>
 map <RIGHT> <NOP>

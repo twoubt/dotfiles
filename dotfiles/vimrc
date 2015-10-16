@@ -36,7 +36,8 @@ nnoremap <LEADER>bc <C-W>q
 nnoremap <LEADER>co ggVGy
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 nnoremap <LEADER>fq :q!<CR>
-nnoremap <LEADER>gp :!git add .<CR>:!git commit<CR>:!git push<CR>
+nnoremap <LEADER>gap :!git add .<CR>:!git commit<CR>:!git push<CR>
+nnoremap <LEADER>ggp :lcd ~/code/Set\ up<CR>:!git add .<CR>:!git commit<CR>:!git push<CR>
 nnoremap <LEADER>h :nohlsearch<CR>
 nnoremap <LEADER>hs :new .<CR>
 nnoremap <LEADER>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
@@ -90,6 +91,7 @@ nnoremap <LEADER>mwh <C-W>H
 nnoremap <LEADER>mwj <C-W>J
 nnoremap <LEADER>mwk <C-W>K
 nnoremap <LEADER>mwl <C-W>L
+
 command! Q q " Bind :Q to :q
 command! Qall qall
 command! QA qall
@@ -115,9 +117,9 @@ set lazyredraw
 set list listchars=tab:»·,trail:·,nbsp:·
 set nobackup
 set noerrorbells
-set novisualbell
 set nofoldenable
 set noswapfile
+set novisualbell
 set nowrap
 set nowritebackup
 set numberwidth=5

@@ -72,11 +72,11 @@ map <RIGHT> <NOP>
 map <UP> <NOP>
 map K <NOP>
 nnoremap <C-W>u :call MergeTabs()<CR>
-nnoremap P P<ESC>
+nnoremap P O<ESC>P<ESC>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
-nnoremap p p<ESC>
+nnoremap p o<ESC>p<ESC>
 nnoremap ˚ :m +1<CR>
 nnoremap ∆ :m -2<CR>
 vnoremap jk <ESC>

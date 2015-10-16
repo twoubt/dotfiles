@@ -36,8 +36,8 @@ nnoremap <LEADER>bc <C-W>q
 nnoremap <LEADER>co ggVGy
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 nnoremap <LEADER>fq :q!<CR>
-nnoremap <LEADER>gap :!git add .<CR>:!git commit<CR>:!git push<CR>
-nnoremap <LEADER>ggp :lcd ~/code/Set\ up<CR>:!git add .<CR>:!git commit<CR>:!git push<CR>
+nnoremap <LEADER>gap :!ga .<CR>:!gc<CR>:!gp<CR>
+nnoremap <LEADER>ggp :lcd ~/code/Set\ up<CR>:!ga .<CR>:!gcmsg 'updated vimrc'<CR>:!gp<CR>
 nnoremap <LEADER>h :nohlsearch<CR>
 nnoremap <LEADER>hs :new .<CR>
 nnoremap <LEADER>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>

@@ -13,12 +13,6 @@ ln -s ~/dotfiles/omz ~/.oh-my-zsh
 rm ~/.gitconfig
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 
-rm /Users/Zhou/Library/Preferences/com.googlecode.iterm2.plist
-ln -s ~/dotfiles/iterm2 /Users/Zhou/Library/Preferences/com.googlecode.iterm2.plist
-
-rm /Users/Zhou/Library/Preferences/com.apple.Terminal.plist
-ln -s ~/dotfiles/terminal /Users/Zhou/Library/Preferences/com.apple.Terminal.plist
-
 rm ~/.agignore
 ln -s ~/dotfiles/agignore ~/.agignore
 

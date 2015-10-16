@@ -1,7 +1,6 @@
-dotfiles/iterm2
+dotfiles/com.googlecode.iterm2.plist
 dotfiles/omz
 dotfiles/secrets
-dotfiles/terminal
 dotfiles/vim/.DS_Store
 dotfiles/vim/.netrwhist
 dotfiles/vim/plugged

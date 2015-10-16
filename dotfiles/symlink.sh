@@ -22,11 +22,14 @@ ln -s ~/dotfiles/terminal /Users/Zhou/Library/Preferences/com.apple.Terminal.pli
 rm ~/.agignore
 ln -s ~/dotfiles/agignore ~/.agignore
 
-rm ~/.secrets 
+rm ~/.secrets
 ln -s ~/dotfiles/secrets ~/.secrets
 
-rm ~/.gitignore_global 
+rm ~/.gitignore_global
 ln -s ~/dotfiles/gitignore ~/.gitignore_global
 
 rm ~/.gemrc
 ln -s ~/dotfiles/gemrc ~/.gemrc
+
+rm ~/.zshenv
+ln -s ~/dotfiles/zshenv ~/.zshenv

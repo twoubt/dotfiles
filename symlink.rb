@@ -7,6 +7,8 @@ files.each do |file|
 end
 
 dotfiles.each do |file|
-	File.delete(File.join('/Users', 'Zhou', '.' + file))
-	File.symlink(File.expand_path(file, File.dirname(__FILE__)), File.join('/Users', 'Zhou', '.' + file))
+  home_path = File.join('/Users', 'Zhou', '.' + file)
+  file_path = File.expand_path(file, File.dirname(__FILE__))
+  File.delete(home_path) if File.exist?(home_path)
+  File.symlink(file_path, home_path)
 end

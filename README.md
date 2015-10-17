@@ -5,7 +5,7 @@ and version control purpose. Files lack comments to make it readable and
 understandable to new users. More than just dotfiles it also serve my brewfiles
 and maintenance of and tools such as brew, npm, pip, rvm.
 
-Symlink is handled with a script I wrote manually, it is very not dry. All the
+Symlink is handled with a ruby script, it will remove dotfiles if it exists and replace it with a symlink. All the
 files here are linked on my dropbox therefore I have not found a reason to use
 dotfile management tools yet.
 

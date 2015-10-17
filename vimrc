@@ -36,9 +36,10 @@ nnoremap <LEADER>bc <C-W>q
 nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <LEADER>co ggVGy
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+nnoremap <LEADER>ee :e .<CR>
 nnoremap <LEADER>fq :q!<CR>
 nnoremap <LEADER>gcp :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
-nnoremap <LEADER>ggp :lcd ~/code/Set\ up<CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
+nnoremap <LEADER>ggp :lcd ~/dotfiles <CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
 nnoremap <LEADER>h :nohlsearch<CR>
 nnoremap <LEADER>hs :new %:p:h<CR>
 nnoremap <LEADER>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
@@ -75,7 +76,7 @@ map <UP> <NOP>
 map K <NOP>
 nnoremap <C-W>u :call MergeTabs()<CR>
 nnoremap P P=`[<ESC>
-nnoremap Y y$
+nnoremap Y yy
 nnoremap j gj
 nnoremap k gk
 nnoremap p p=`[<ESC>

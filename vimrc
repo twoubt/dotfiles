@@ -47,7 +47,7 @@ nnoremap <LEADER>i mmgg=G`m<CR>
 nnoremap <LEADER>n :call RenameFile()<CR>
 nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
 nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-W>q
-nnoremap <LEADER>pwd :pwd<CR>
+nnoremap <LEADER>pwd :echo expand("%:p")<CR>
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
 nnoremap <LEADER>so :source $MYVIMRC<CR>
 nnoremap <LEADER>tc :tabclose<CR>

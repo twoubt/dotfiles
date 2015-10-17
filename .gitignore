@@ -1,7 +1,8 @@
+.DS_Store
 com.googlecode.iterm2.plist
-omz
+oh-my-zsh
 secrets
+term_colours
 vim/.DS_Store
 vim/.netrwhist
 vim/plugged
-term_colours

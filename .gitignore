@@ -1,7 +1,7 @@
-dotfiles/com.googlecode.iterm2.plist
-dotfiles/omz
-dotfiles/secrets
-dotfiles/vim/.DS_Store
-dotfiles/vim/.netrwhist
-dotfiles/vim/plugged
+com.googlecode.iterm2.plist
+omz
+secrets
+vim/.DS_Store
+vim/.netrwhist
+vim/plugged
 term_colours

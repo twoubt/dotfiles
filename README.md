@@ -1,8 +1,17 @@
 # dotfiles
 
-These are my personal dotfiles and the configuration that it uses. It also has a
-brewfile script so I can set up all the necessary brew components I need. It has
-a clean up script to make the weekly maintenance simpler. There is a symlink
-script to link all the dotfiles to the necessary places. 
+These are my personal dotfiles configuration. This repo serves more as backup
+and version control purpose. Files lack comments to make it readable and
+understandable to new users. More than just dotfiles it also serve my brewfiles
+and maintenance of and tools such as brew, npm, pip, rvm.
 
-type ```sh [scriptname]``` to run the script 
+Symlink is handled with a script I wrote manually, it is very not dry. All the
+files here are linked on my dropbox therefore I have not found a reason to use
+dotfile management tools yet.
+
+Almost everything here are stolen from various other amazing people.
+Inspirations:
+Thoughtbot
+r00k
+Christ Toomey
+and dozens of others at https://dotfiles.github.io/

@@ -4,8 +4,12 @@ brew install node
 brew install postgresql
 brew install zsh
 brew install mongodb
-brew install vim
+brew install vim --with-lua
 brew install tmux
+brew install git
+brew install the_silver_searcher
+brew install tree
+
 
 # Install Casks
 brew cask install tower

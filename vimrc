@@ -74,11 +74,11 @@ map <RIGHT> <NOP>
 map <UP> <NOP>
 map K <NOP>
 nnoremap <C-W>u :call MergeTabs()<CR>
-nnoremap P P<ESC>
+nnoremap P P=`[<ESC>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
-nnoremap p p<ESC>
+nnoremap p p=`[<ESC>
 nnoremap ˚ :m +1<CR>
 nnoremap ∆ :m -2<CR>
 vnoremap jk <ESC>
@@ -143,6 +143,17 @@ set tabstop=2
 set timeoutlen=800
 set ttimeout
 set ttimeoutlen=1
+set ttyfast
+set wildignore+=*.gem
+set wildignore+=*.png,*.jpg,*.gif,*.jpeg
+set wildignore+=*DS_Store*
+set wildignore+=*sass-cache*
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=vendor/cache/**
+set wildignore+=vendor/rails/**
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildmenu
 set wildmode=list:longest,list:full
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing

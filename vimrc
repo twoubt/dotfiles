@@ -128,6 +128,7 @@ set list listchars=tab:»·,trail:·,nbsp:·
 set nobackup
 set noerrorbells
 set nofoldenable
+set noshowmode
 set noswapfile
 set novisualbell
 set nowrap

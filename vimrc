@@ -3,23 +3,30 @@ filetype off                  " required
 runtime macros/matchit.vim
 
 call plug#begin('~/.vim/plugged')
+"powerline
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
+" themes
+Plug 'flazz/vim-colorschemes'
+
+Plug 'Raimondi/delimitMate'
 Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
-Plug 'bling/vim-airline'
 Plug 'christoomey/vim-sort-motion'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ervandew/supertab'
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
-Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails', { 'for': 'rails' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -42,18 +49,20 @@ nnoremap <LEADER>gcp :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
 nnoremap <LEADER>ggp :lcd ~/dotfiles <CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
 nnoremap <LEADER>h :nohlsearch<CR>
 nnoremap <LEADER>hs :new %:p:h<CR>
-nnoremap <LEADER>hsf :new<CR>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <LEADER>hsf :new<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>i mmgg=G`m<CR>
 nnoremap <LEADER>n :call RenameFile()<CR>
 nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
-nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR><C-W>q
+nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><C-W>q
 nnoremap <LEADER>pwd :echo expand("%:p")<CR>
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
 nnoremap <LEADER>so :source $MYVIMRC<CR>
 nnoremap <LEADER>tc :tabclose<CR>
+nnoremap <LEADER>u :call MergeTabs()<CR>
 nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
 nnoremap <LEADER>vs :vnew %:p:h<CR>
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <LEADER>w :w<CR>
 nnoremap <LEADER>wq :wq<CR>
 
 " vim-rspec mappings
@@ -64,36 +73,33 @@ nnoremap <LEADER>t :call RunCurrentSpecFile()<CR>
 " Switch between the last two files
 nnoremap <LEADER><LEADER> <C-^>
 
-inoremap <C-S> <ESC>:w<CR>
 inoremap jk <ESC>
 inoremap kj <ESC>
-map <C-S> <ESC>:w<CR>
 map <C-T> <ESC>:tabnew .<CR>
 map <DOWN> <NOP>
 map <LEFT> <NOP>
 map <RIGHT> <NOP>
 map <UP> <NOP>
 map K <NOP>
-nnoremap <C-W>u :call MergeTabs()<CR>
 nnoremap P P=`[<ESC>
 nnoremap Y yy
 nnoremap j gj
 nnoremap k gk
 nnoremap p p=`[<ESC>
-nnoremap ˚ :m +1<CR>
-nnoremap ∆ :m -2<CR>
+nnoremap ˚ :m -2<CR>
+nnoremap ∆ :m +1<CR>
 vnoremap jk <ESC>
 vnoremap kj <ESC>
 
 " Quicker window movement
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <LEADER>mwh <C-W>H
-nnoremap <LEADER>mwj <C-W>J
-nnoremap <LEADER>mwk <C-W>K
-nnoremap <LEADER>mwl <C-W>L
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+nnoremap <C-W>h <C-W>H
+nnoremap <C-W>j <C-W>J
+nnoremap <C-W>k <C-W>K
+nnoremap <C-W>l <C-W>L
 
 command! Q q " Bind :Q to :q
 command! Qall qall
@@ -164,15 +170,12 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 let g:html_indent_tags = 'li\|p'
 
 " theme
+set t_Co=256
 syntax enable
 set background=dark
-colorscheme gruvbox
+colorscheme wombat256
 
 " Syntax setting start
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1

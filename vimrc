@@ -26,7 +26,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tpope/vim-rails', { 'for': 'rails' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'

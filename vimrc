@@ -39,30 +39,56 @@ filetype plugin indent on
 " Leader
 let mapleader = " "
 nnoremap <LEADER>bb :!bundle install<CR>
+" close a buffer
 nnoremap <LEADER>bc <C-W>q
+" change current buffer file path to file path of the open file
 nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
+" copy the entire buffer
 nnoremap <LEADER>co ggVGy
+" runs e with the current file path for quicker access
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+" runs e with tree
 nnoremap <LEADER>ee :e .<CR>
+" force quit buffer
 nnoremap <LEADER>fq :q!<CR>
+" silently add all files in current path, commit and push. note path is the
+" path of vim, not the file
 nnoremap <LEADER>gcp :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
+" git add, commit and push for vimrc changes
 nnoremap <LEADER>ggp :lcd ~/dotfiles <CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
+" turn off search highlighting
 nnoremap <LEADER>h :nohlsearch<CR>
+" split pane down with tree
 nnoremap <LEADER>hs :new %:p:h<CR>
+" split pane down with pre entered file path
 nnoremap <LEADER>hsf :new<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+" auto indent file and move cursor back to triggered location.
 nnoremap <LEADER>i mmgg=G`m<CR>
+" rename the file
 nnoremap <LEADER>n :call RenameFile()<CR>
+" paste from system clipboard at current indent level
 nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
+" source, clean, install and update plugins
 nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><C-W>q
+" echo current file path
 nnoremap <LEADER>pwd :echo expand("%:p")<CR>
+" remove trailing white spaces
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
+" source vimrc and refresh airline status bar
 nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
+" close tab
 nnoremap <LEADER>tc :tabclose<CR>
+" merge two tabs
 nnoremap <LEADER>u :call MergeTabs()<CR>
+" load vimrc in a new tab
 nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
+" split right with tree
 nnoremap <LEADER>vs :vnew %:p:h<CR>
+" split right with pre entered file path
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+" save file
 nnoremap <LEADER>w :w<CR>
+" save file and quit
 nnoremap <LEADER>wq :wq<CR>
 
 " vim-rspec mappings
@@ -73,23 +99,32 @@ nnoremap <LEADER>t :call RunCurrentSpecFile()<CR>
 " Switch between the last two files
 nnoremap <LEADER><LEADER> <C-^>
 
+" jk to escape input and visual mode
 inoremap jk <ESC>
 inoremap kj <ESC>
+vnoremap jk <ESC>
+vnoremap kj <ESC>
+
+" create new tab
 map <C-T> <ESC>:tabnew .<CR>
+" arrow keys do nothing
 map <DOWN> <NOP>
 map <LEFT> <NOP>
 map <RIGHT> <NOP>
 map <UP> <NOP>
+" disable K (which is lookup word under cursor)
 map K <NOP>
-nnoremap P P=`[<ESC>
+" quicker line yank
 nnoremap Y yy
+" ignore wrapped lines
 nnoremap j gj
 nnoremap k gk
+" paste at current indent level
+nnoremap P P=`[<ESC>
 nnoremap p p=`[<ESC>
+" move line up or down with alt jk
 nnoremap ˚ :m -2<CR>
 nnoremap ∆ :m +1<CR>
-vnoremap jk <ESC>
-vnoremap kj <ESC>
 
 " Quicker window movement
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
@@ -101,6 +136,7 @@ nnoremap <C-W>j <C-W>J
 nnoremap <C-W>k <C-W>K
 nnoremap <C-W>l <C-W>L
 
+" for the typos
 command! Q q " Bind :Q to :q
 command! Qall qall
 command! QA qall

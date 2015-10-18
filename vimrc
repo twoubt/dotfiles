@@ -3,8 +3,6 @@ filetype off                  " required
 runtime macros/matchit.vim
 
 call plug#begin('~/.vim/plugged')
-"powerline
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " themes
 Plug 'flazz/vim-colorschemes'
@@ -14,6 +12,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ervandew/supertab'
@@ -57,7 +56,7 @@ nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
 nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><C-W>q
 nnoremap <LEADER>pwd :echo expand("%:p")<CR>
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
-nnoremap <LEADER>so :source $MYVIMRC<CR>
+nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
 nnoremap <LEADER>tc :tabclose<CR>
 nnoremap <LEADER>u :call MergeTabs()<CR>
 nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
@@ -177,10 +176,13 @@ syntax enable
 set background=dark
 colorscheme wombat256
 
-" Syntax setting start
+" vim airline
+let g:airline_powerline_fonts = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+" Syntax setting start
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1

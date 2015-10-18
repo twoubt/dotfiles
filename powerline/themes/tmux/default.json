@@ -1,9 +1,21 @@
 {
 	"segments": {
 		"right": [
-			{
-				"function": "powerline.segments.common.bat.battery"
-			},
+      {
+        "function": "powerline.segments.common.wthr.weather",
+        "args": {
+          "unit": "C"
+        }
+      },
+      {
+        "function": "powerline.segments.common.bat.battery",
+        "args": {
+          "gamify": true
+        }
+      },
+      {
+        "function": "powerline.segments.common.bat.battery"
+      },
 			{
 				"function": "powerline.segments.common.time.date"
 			},

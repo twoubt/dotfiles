@@ -40,7 +40,7 @@ filetype plugin indent on
 let mapleader = " "
 nnoremap <LEADER>bb :!bundle install<CR>
 " close a buffer
-nnoremap <LEADER>bc <C-W>q
+nnoremap <LEADER>x <C-W>q
 " change current buffer file path to file path of the open file
 nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
 " copy the entire buffer
@@ -77,7 +77,7 @@ nnoremap <LEADER>rw :%s/\s\+$//e<CR>
 " source vimrc and refresh airline status bar
 nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
 " close tab
-nnoremap <LEADER>tc :tabclose<CR>
+nnoremap <LEADER>X :tabclose<CR>
 " merge two tabs
 nnoremap <LEADER>u :call MergeTabs()<CR>
 " load vimrc in a new tab
@@ -90,6 +90,9 @@ nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>w :w<CR>
 " save file and quit
 nnoremap <LEADER>wq :wq<CR>
+" zoom a vim pane
+nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>Z :wincmd =<cr>
 
 " vim-rspec mappings
 nnoremap <LEADER>l :call RunLastSpec()<CR>
@@ -142,7 +145,11 @@ command! Qall qall
 command! QA qall
 command! E e
 
+" auto remove trailing white spaces for these files
 autocmd BufWritePre *.rb :%s/\s\+$//e
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
 set autoindent
 set autoread

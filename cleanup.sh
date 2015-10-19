@@ -4,6 +4,7 @@ gem update
 gem cleanup
 brew cleanup
 brew update
+brew upgrade
 bower cache clean
 bower update
 npm cache clean

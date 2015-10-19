@@ -9,25 +9,28 @@ Plug 'flazz/vim-colorschemes'
 
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/neocomplete.vim'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
 Plug 'ervandew/supertab'
-Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
-Plug 'thoughtbot/vim-rspec'
+Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'rails'] }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-Plug 'tpope/vim-rails', { 'for': 'rails' }
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'rails'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rails'] }
@@ -98,6 +101,7 @@ nnoremap <leader>Z :wincmd =<cr>
 nnoremap <LEADER>l :call RunLastSpec()<CR>
 nnoremap <LEADER>s :call RunNearestSpec()<CR>
 nnoremap <LEADER>t :call RunCurrentSpecFile()<CR>
+let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 
 " Switch between the last two files
 nnoremap <LEADER><LEADER> <C-^>

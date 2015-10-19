@@ -36,4 +36,5 @@ end
 @bin.each do |file|
   move_existing(file, '/usr/local/bin/')
   File.symlink(source_from(file), source_to(file, '/usr/local/bin/'))
+  FileUtils.chmod("u+x", source_to(file, '/usr/local/bin/'))
 end

@@ -1,15 +1,17 @@
 # dotfiles
 
-These are my personal dotfiles configuration. This repo serves more as backup
-and version control purpose. Files lack comments to make it readable and
-understandable to new users. More than just dotfiles it also serve my brewfiles
-and maintenance of and tools such as brew, npm, pip, rvm.
+To install
+``` clone the repo into your directory ```
+run
+``` ruby install.rb ```
+The script will move your existing dotfiles into a folder called old_dotfiles in
+your home directory.
 
-Symlink is handled with a ruby script, it will remove dotfiles if it exists and replace it with a symlink. All the
-files here are linked on my dropbox therefore I have not found a reason to use
-dotfile management tools yet.
+My recommendation is not to use install but rather browse through the dotfiles
+and steal what you want. Slowly but surely you will build an awesome dotfile
+collection too.
 
-Almost everything here are stolen from various other amazing people.
+Almost everything here are stolen from various other amazing repos.
 Inspirations:
 Thoughtbot
 r00k

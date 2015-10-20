@@ -132,6 +132,8 @@ nnoremap p p=`[<ESC>
 " move line up or down with alt jk
 nnoremap ˚ :m -2<CR>
 nnoremap ∆ :m +1<CR>
+" remove + moves down a line
+map + <NOP>
 
 " Quicker window movement
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>

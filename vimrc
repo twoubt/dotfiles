@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 " themes
 Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/neocomplete.vim'
@@ -224,7 +225,7 @@ let g:html_indent_tags = 'li\|p'
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme wombat256
+colorscheme molokai
 
 " vim airline
 let g:airline_powerline_fonts = 1

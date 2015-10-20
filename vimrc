@@ -225,7 +225,7 @@ let g:html_indent_tags = 'li\|p'
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme molokai
+colorscheme wombat256
 
 " vim airline
 let g:airline_powerline_fonts = 1

@@ -220,7 +220,7 @@ let g:airline_theme="tomorrow"
 let g:airline_powerline_fonts = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%:
+set statusline+=%*:
 
 " Syntax setting start
 let g:syntastic_always_populate_loc_list = 1

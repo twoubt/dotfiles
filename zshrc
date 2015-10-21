@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/Users/Zhou/.oh-my-zsh
+export ZSH=/Users/Zhou/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-  ZSH_THEME=pygmalion
+ZSH_THEME=pygmalion
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,27 +49,50 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-  plugins=(git rails web-search jump)
+plugins=(git rails web-search jump)
 
 # User configuration
-  stty -ixon
-  source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
-  source "$HOME/.secrets"
-  source $ZSH/oh-my-zsh.sh
-  export PATH=$HOME/bin:/usr/local/bin:$PATH
-  export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-  export PATH="$PATH:/Users/Zhou/.rvm/gems/ruby-2.2.2/bin:/Users/Zhou/.rvm/gems/ruby-2.2.2@global/bin:/Users/Zhou/.rvm/rubies/ruby-2.2.2/bin:/usr/bin:/bin:/Users/Zhou/.rvm/bin"
+stty -ixon
+source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+source "$HOME/.secrets"
+source $ZSH/oh-my-zsh.sh
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$PATH:/Users/Zhou/.rvm/gems/ruby-2.2.2/bin:/Users/Zhou/.rvm/gems/ruby-2.2.2@global/bin:/Users/Zhou/.rvm/rubies/ruby-2.2.2/bin:/usr/bin:/bin:/Users/Zhou/.rvm/bin"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
-
-ensure_tmux_is_running() {
-  if _not_inside_tmux; then
-      tat
-      fi
-    }
-ensure_tmux_is_running
-
+# _not_inside_tmux() { [[ -z "$TMUX" ]] }
+#
+# ensure_tmux_is_running() {
+#   if _not_inside_tmux; then
+#     tat
+#   fi
+# }
+# ensure_tmux_is_running
+#
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+pid=$$
+running_in_iterm=0
+while [ $pid -ne 1 ]; do
+  command=$(ps -o command= -p $pid)
+  case "$command" in
+    *iTerm*)
+      running_in_iterm=1
+      break;;
+  esac
+  pid=$(ps -o ppid= -p $pid)
+done
+if [ $running_in_iterm -eq 1 ]; then
+
+  _not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+  ensure_tmux_is_running() {
+    if _not_inside_tmux; then
+      tat
+    fi
+  }
+  ensure_tmux_is_running
+fi

@@ -5,24 +5,25 @@ runtime macros/matchit.vim
 call plug#begin('~/.vim/plugged')
 
 " themes
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
 Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
@@ -43,32 +44,24 @@ filetype plugin indent on
 " Leader
 let mapleader = " "
 nnoremap <LEADER>bb :!bundle install<CR>
-" close a buffer
 nnoremap <LEADER>x <C-W>q
 " change current buffer file path to file path of the open file
 nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
 " copy the entire buffer
 nnoremap <LEADER>co ggVGy
-" runs e with the current file path for quicker access
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-" runs e with tree
 nnoremap <LEADER>ee :e .<CR>
-" force quit buffer
 nnoremap <LEADER>fq :q!<CR>
 " silently add all files in current path, commit and push. note path is the
 " path of vim, not the file
 nnoremap <LEADER>gcp :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
 " git add, commit and push for vimrc changes
 nnoremap <LEADER>ggp :lcd ~/dotfiles <CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
-" turn off search highlighting
 nnoremap <LEADER>h :nohlsearch<CR>
-" split pane down with tree
 nnoremap <LEADER>hs :new %:p:h<CR>
-" split pane down with pre entered file path
 nnoremap <LEADER>hsf :new<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 " auto indent file and move cursor back to triggered location.
 nnoremap <LEADER>i mmgg=G`m<CR>
-" rename the file
 nnoremap <LEADER>n :call RenameFile()<CR>
 " paste from system clipboard at current indent level
 nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
@@ -78,25 +71,19 @@ nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpda
 nnoremap <LEADER>pwd :echo expand("%:p")<CR>
 " remove trailing white spaces
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
-" source vimrc and refresh airline status bar
 nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
-" close tab
 nnoremap <LEADER>X :tabclose<CR>
-" merge two tabs
 nnoremap <LEADER>u :call MergeTabs()<CR>
-" load vimrc in a new tab
 nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
-" split right with tree
 nnoremap <LEADER>vs :vnew %:p:h<CR>
-" split right with pre entered file path
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-" save file
 nnoremap <LEADER>w :w<CR>
-" save file and quit
 nnoremap <LEADER>wq :wq<CR>
 " zoom a vim pane
-nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>Z :wincmd =<cr>
+nnoremap <LEADER>z :wincmd _<CR>:wincmd \|<CR>
+nnoremap <LEADER>Z :wincmd =<CR>
+nnoremap <LEADER>tm :tabe ~/.tmux.conf<CR>
+nnoremap <LEADER>zs :tabe ~/.zshrc<CR>
 
 " vim-rspec mappings
 nnoremap <LEADER>l :call RunLastSpec()<CR>
@@ -225,13 +212,15 @@ let g:html_indent_tags = 'li\|p'
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme wombat256
+let g:gruvbox_contrast_dark="hard"
+colorscheme gruvbox
 
 " vim airline
+let g:airline_theme="tomorrow"
 let g:airline_powerline_fonts = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set statusline+=%:
 
 " Syntax setting start
 let g:syntastic_always_populate_loc_list = 1

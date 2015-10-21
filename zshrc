@@ -53,6 +53,7 @@
 
 # User configuration
   stty -ixon
+  source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
   source "$HOME/.secrets"
   source $ZSH/oh-my-zsh.sh
   export PATH=$HOME/bin:/usr/local/bin:$PATH

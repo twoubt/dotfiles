@@ -20,3 +20,4 @@ brew cask install skype
 brew cask install unarchiver
 brew cask install steam
 brew cask install iterm2
+brew cask install alfred

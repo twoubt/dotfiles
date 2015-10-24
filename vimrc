@@ -74,7 +74,6 @@ nnoremap <LEADER>rw :%s/\s\+$//e<CR>
 nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
 nnoremap <LEADER>X :tabclose<CR>
 nnoremap <LEADER>u :call MergeTabs()<CR>
-nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
 nnoremap <LEADER>vs :vnew %:p:h<CR>
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>w :w<CR>
@@ -82,6 +81,8 @@ nnoremap <LEADER>wq :wq<CR>
 " zoom a vim pane
 nnoremap <LEADER>z :wincmd _<CR>:wincmd \|<CR>
 nnoremap <LEADER>Z :wincmd =<CR>
+
+nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
 nnoremap <LEADER>tm :tabe ~/.tmux.conf<CR>
 nnoremap <LEADER>zs :tabe ~/.zshrc<CR>
 
@@ -118,8 +119,8 @@ nnoremap k gk
 nnoremap P P=`[<ESC>
 nnoremap p p=`[<ESC>
 " move line up or down with alt jk
-nnoremap ˚ :m -2<CR>
-nnoremap ∆ :m +1<CR>
+nnoremap <A-J> :m -2<CR>
+nnoremap <A-K> :m +1<CR>
 " remove - and + moves up and down
 map + <NOP>
 map - <NOP>
@@ -256,6 +257,8 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.md setlocal noautoindent
+  autocmd BufRead,BufNewFile *.md setlocal nosmartindent
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell

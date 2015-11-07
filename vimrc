@@ -29,6 +29,7 @@ Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'rails'] }
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
@@ -43,7 +44,7 @@ filetype plugin indent on
 
 " Leader
 let mapleader = " "
-nnoremap <LEADER>bb :!bundle install<CR>
+nnoremap <LEADER>bb :Dispatch bundle install<CR>
 nnoremap <LEADER>x <C-W>q
 " change current buffer file path to file path of the open file
 nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
@@ -78,6 +79,7 @@ nnoremap <LEADER>vs :vnew %:p:h<CR>
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>w :w<CR>
 nnoremap <LEADER>wq :wq<CR>
+nnoremap <LEADER>gst :Gstatus<CR>
 " zoom a vim pane
 nnoremap <LEADER>z :wincmd _<CR>:wincmd \|<CR>
 nnoremap <LEADER>Z :wincmd =<CR>
@@ -90,7 +92,7 @@ nnoremap <LEADER>zs :tabe ~/.zshrc<CR>
 nnoremap <LEADER>l :call RunLastSpec()<CR>
 nnoremap <LEADER>s :call RunNearestSpec()<CR>
 nnoremap <LEADER>t :call RunCurrentSpecFile()<CR>
-let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " Switch between the last two files
 nnoremap <LEADER><LEADER> <C-^>

@@ -7,17 +7,18 @@ files = Dir.glob("*")
 @dotfiles = []
 
 def source_from(file)
-  p File.expand_path(file, File.dirname(__FILE__))
+  File.expand_path(file, File.dirname(__FILE__))
 end
 
 def source_to(file, path= '')
-  p path + file
+  path + file
 end
 
 def move_existing(file, path)
-  FileUtils.mkdir('~/old_dotfiles') unless File.exists?(File.expand_path('~/old_dotfiles'))
+  Dir.mkdir(File.join(Dir.home, 'old_dotfiles')) unless File.exists?(File.expand_path('~/old_dotfiles'))
   if File.exists?(File.expand_path(source_to(file, path)))
     FileUtils.mv(source_to(file, path), '~/old_dotfiles/'+file)
+    p "#{file} moved"
   end
 end
 
@@ -32,15 +33,18 @@ end
 @dotfiles.each do |file|
   move_existing(file, '~/.')
   File.symlink(source_from(file), source_to(file, '~/.'))
+  p "#{file} linked"
 end
 
 @bin.each do |file|
   move_existing(file, '/usr/local/bin/')
   File.symlink(source_from(file), source_to(file, '/usr/local/bin/'))
   FileUtils.chmod("u+x", source_to(file, '/usr/local/bin/'))
+  p "#{file} linked"
 end
 
 @powerline.each do |file|
   move_existing(file, '~/.config/')
   File.symlink(source_from(file), source_to(file, '~/.config/'))
+  p "#{file} linked"
 end

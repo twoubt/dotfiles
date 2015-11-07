@@ -77,6 +77,10 @@ nnoremap <LEADER>wq :wq<CR>
 nnoremap <LEADER>gst :Gstatus<CR>
 nnoremap <LEADER>ggp :Gpush<CR>
 
+"Dispatch run current ruby file
+nnoremap <LEADER>br :VtrOpenRunner<CR> :VtrSendFile<CR>
+nnoremap <LEADER>bc :VtrKillRunner<CR>
+
 " zoom a vim pane
 nnoremap <LEADER>z :wincmd _<CR>:wincmd \|<CR>
 nnoremap <LEADER>Z :wincmd =<CR>
@@ -84,6 +88,7 @@ nnoremap <LEADER>Z :wincmd =<CR>
 nnoremap <LEADER>vi :tabe $MYVIMRC<CR>
 nnoremap <LEADER>tm :tabe ~/.tmux.conf<CR>
 nnoremap <LEADER>zs :tabe ~/.zshrc<CR>
+nnoremap <LEADER>in :tabe ~/dotfiles/install.rb<CR>
 
 " vim-rspec mappings
 nnoremap <LEADER>l :call RunLastSpec()<CR>
@@ -118,8 +123,8 @@ nnoremap k gk
 nnoremap P P=`[<ESC>
 nnoremap p p=`[<ESC>
 " move line up or down with alt jk
-nnoremap <A-J> :m -2<CR>
-nnoremap <A-K> :m +1<CR>
+nnoremap ∆ :m -2<CR>
+nnoremap ˚ :m +1<CR>
 " remove - and + moves up and down
 map + <NOP>
 map - <NOP>

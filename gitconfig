@@ -15,4 +15,4 @@
 [credential]
 	helper = osxkeychain
 [alias]
-	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	gi = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"

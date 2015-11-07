@@ -53,11 +53,6 @@ nnoremap <LEADER>co ggVGy
 nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 nnoremap <LEADER>ee :e .<CR>
 nnoremap <LEADER>fq :q!<CR>
-" silently add all files in current path, commit and push. note path is the
-" path of vim, not the file
-nnoremap <LEADER>gcp :silent !ga .<CR>:silent !gc<CR>:!gp<CR>
-" git add, commit and push for vimrc changes
-nnoremap <LEADER>gvp :lcd ~/dotfiles <CR>:silent !ga .<CR>:silent !gcmsg 'updated vimrc'<CR>:!gp<CR>
 nnoremap <LEADER>h :nohlsearch<CR>
 nnoremap <LEADER>hs :new %:p:h<CR>
 nnoremap <LEADER>hsf :new<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>

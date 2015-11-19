@@ -22,21 +22,21 @@ Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'kana/vim-textobj-user'
 Plug 'kien/ctrlp.vim'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'rails'] }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mattn/emmet-vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'pangloss/vim-javascript'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
-Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'rails'] }
+Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'rails'] }
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rails'] }
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -44,38 +44,43 @@ filetype plugin indent on
 
 " Leader
 let mapleader = " "
-nnoremap <LEADER>bb :Dispatch bundle install<CR>
-nnoremap <LEADER>x <C-W>q
-" change current buffer file path to file path of the open file
-nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
-" copy the entire buffer
-nnoremap <LEADER>co ggVGy
-nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-nnoremap <LEADER>ee :e .<CR>
-nnoremap <LEADER>fq :q!<CR>
-nnoremap <LEADER>h :nohlsearch<CR>
-nnoremap <LEADER>hs :new %:p:h<CR>
-nnoremap <LEADER>hsf :new<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-" auto indent file and move cursor back to triggered location.
-nnoremap <LEADER>i mmgg=G`m<CR>
-nnoremap <LEADER>n :call RenameFile()<CR>
-" paste from system clipboard at current indent level
-nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
+nnoremap <LEADER>bb :Dispatch! bundle install<CR>
 " source, clean, install and update plugins
 nnoremap <LEADER>pp :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><C-W>q
-" echo current file path
+nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
+
+" change current buffer file path to file path of the open file
+nnoremap <LEADER>cd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <LEADER>pwd :echo expand("%:p")<CR>
+" copy the entire buffer
+nnoremap <LEADER>co ggVGy
+" paste from system clipboard at current indent level
+nnoremap <LEADER>pa :set paste<CR>o<ESC>"*]p :set nopaste<CR>
+nnoremap <LEADER>n :call RenameFile()<CR>
+nnoremap <LEADER>h :nohlsearch<CR>
+" auto indent file and move cursor back to triggered location.
+nnoremap <LEADER>i mmgg=G`m<CR>
 " remove trailing white spaces
 nnoremap <LEADER>rw :%s/\s\+$//e<CR>
-nnoremap <LEADER>so :source $MYVIMRC<CR>:AirlineRefresh<CR>
-nnoremap <LEADER>X :tabclose<CR>
 nnoremap <LEADER>u :call MergeTabs()<CR>
+
+nnoremap <LEADER>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+nnoremap <LEADER>ee :e .<CR>
+nnoremap <LEADER>hs :new %:p:h<CR>
+nnoremap <LEADER>hsf :new<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 nnoremap <LEADER>vs :vnew %:p:h<CR>
 nnoremap <LEADER>vsf :vnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <LEADER>tt :tabnew<C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+nnoremap <LEADER>te :tabnew .<CR>
+
 nnoremap <LEADER>w :w<CR>
 nnoremap <LEADER>wq :wq<CR>
+nnoremap <LEADER>fq :q!<CR>
+nnoremap <LEADER>x <C-W>q
+nnoremap <LEADER>X :tabclose<CR>
+
 nnoremap <LEADER>gst :Gstatus<CR>
-nnoremap <LEADER>ggp :Gpush<CR>
+nnoremap <LEADER>gp :Gpush<CR>
 
 "Dispatch run current ruby file
 nnoremap <LEADER>br :VtrOpenRunner<CR> :VtrSendFile<CR>
@@ -105,8 +110,6 @@ inoremap kj <ESC>
 vnoremap jk <ESC>
 vnoremap kj <ESC>
 
-" create new tab
-map <C-T> <ESC>:tabnew .<CR>
 " arrow keys do nothing
 map <DOWN> <NOP>
 map <LEFT> <NOP>

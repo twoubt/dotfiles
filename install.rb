@@ -1,7 +1,7 @@
 require 'fileutils'
 
 files = Dir.glob("*")
-@ignore_files = ['README.md', 'com.googlecode.iterm2.plist', 'term_colours', 'symlink.rb', 'Brewfile.sh', 'cleanup.sh']
+@ignore_files = ['README.md', 'com.googlecode.iterm3.plist', 'term_colours', 'install.rb', 'Brewfile.sh', 'cleanup.sh', 'rails_rspec.rb']
 @bin = ['tat']
 @powerline = ['powerline']
 @dotfiles = []
@@ -42,9 +42,9 @@ end
   FileUtils.chmod("u+x", source_to(file, '/usr/local/bin/'))
   p "#{file} linked"
 end
-
-@powerline.each do |file|
-  move_existing(file, '~/.config/')
-  File.symlink(source_from(file), source_to(file, '~/.config/'))
-  p "#{file} linked"
-end
+#
+# @powerline.each do |file|
+#   move_existing(file, '~/.config/')
+#   File.symlink(source_from(file), source_to(file, '~/.config/'))
+#   p "#{file} linked"
+# end

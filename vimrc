@@ -126,17 +126,18 @@ nnoremap k gk
 nnoremap P P=`[<ESC>
 nnoremap p p=`[<ESC>
 " move line up or down with alt jk
-nnoremap ∆ :m -2<CR>
-nnoremap ˚ :m +1<CR>
+nnoremap ∆ :m +1<CR>
+nnoremap ˚ :m -2<CR>
 " remove - and + moves up and down
 map + <NOP>
 map - <NOP>
 
 " Quicker window movement
-nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <C-W>h <C-W>H
 nnoremap <C-W>j <C-W>J
 nnoremap <C-W>k <C-W>K

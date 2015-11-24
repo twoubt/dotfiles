@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Zhou/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -58,7 +58,7 @@ source "$HOME/.secrets"
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH="$PATH:/Users/Zhou/.rvm/gems/ruby-2.2.2/bin:/Users/Zhou/.rvm/gems/ruby-2.2.2@global/bin:/Users/Zhou/.rvm/rubies/ruby-2.2.2/bin:/usr/bin:/bin:/Users/Zhou/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/gems/ruby-2.2.2/bin:$HOME/.rvm/gems/ruby-2.2.2@global/bin:$HOME/.rvm/rubies/ruby-2.2.2/bin:/usr/bin:/bin:$HOME/.rvm/bin"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
